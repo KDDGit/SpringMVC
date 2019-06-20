@@ -19,3 +19,91 @@
 		Controller（控制器）
 			是应用程序中处理用户交互部分，就是处理程序逻辑的。
 			先前用servlet，后升级为filter，现在升级为Java类
+#### Spring mvc入门案例
+	1、eclipse中新建一个Dynamic web Project项目	
+		Dynamic web module version 这项什么意思？选2.5
+	2、导入jar包
+		ioc的五个jar包
+			commons-logging
+			spring-beans
+			spring-context
+			spring-core
+			spring-expression
+		spring-mvc
+			spring-web 
+			spring-webmvc
+		注解包
+			aop的核心包
+	
+	3、类路径下创建Springmvc.xml
+	4、导约束
+	``
+		<?xml version="1.0" encoding="UTF-8"?>
+		<beans 	xmlns="http://www.springframework.org/schema/beans"
+		xmlns:mvc="http://www.springframework.org/schema/mvc"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+							http://www.springframework.org/schema/beans/spring-beans.xsd
+							http://www.springframework.org/schema/mvc
+							http://www.springframework.org/schema/mvc/spring-mvc.xsd
+							http://www.springframework.org/schema/context
+							http://www.springframework.org/schema/context/spring-context.xsd">
+							``
+	5、在web.xml配置核心控制器
+		注：快捷键：ctrl+shift+t
+		<!-- 配置spring的核心控制器 -->
+		<servlet>
+			<servlet-name>dispatcherServlet<servlet-name>
+			<servlet-class>org.springframework.web.servlet.DidpatcherServlet</servlet-class>
+			<!-- 配置servlet的初始化参数，告知servlet springmvc的配置文件位置 -->
+			<init-param>
+				<param-name>contextConfigLocation</param-name>  //特定名字
+				<param-value>classpath:springmvc.xml</param-value>
+			</init-param>
+			<!-- 配置servlet启动顺序 -->
+			<load-on-startup>1</load-on-startup>  //非零正整数
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>dispatcherServlet</servlet-name>
+			<url-pattern>/<url-pattern> //资源全拦截
+		</servlet-mapping>
+	6、在webcontent下创建index.jsp文件
+		修改编码，title，<a href="${pageContext.request.contextPath}/hello">第一个springmvc程序</a>
+	
+	7、创建一个类HelloController
+		public class helloController{
+			public Sting sayHello(){
+				System.out.println("HelloController的sayHello方法执行了。。。");
+				return "success";
+			}
+		}
+	8、在WEB-INF下创建pages/success.jsp
+		
+	9、在类上添加注解：
+		@Controller("helloController")
+	
+	10、在springmvc中要配置
+		<!-- 告知Spring创建容器时要扫描的包 -->
+		<context:component-scan base-package="com.itheima.web"></context:component-scan>
+	
+	11、在方法上面添加注解：
+		@RequestMapping("/hello")//请求的映射：它要和浏览器请求url保持一致
+	
+	12、在springmvc中配置视图解析器
+		注：快捷键：ctrl+shift+t
+		<!-- 配置springmvc的视图解析器 -->
+		<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			<property name="prefix" value="/WEB-INF/pages/"></property>
+			<property name="suffix" value=".jsp"></property>
+		</bean>
+	
+	13、部署到tomcat中，启动
+	
+	14、在页面中访问：localhost：8080/项目名
+	
+					
+			
+			
+			
+			
