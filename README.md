@@ -19,7 +19,7 @@
 		Controller（控制器）
 			是应用程序中处理用户交互部分，就是处理程序逻辑的。
 			先前用servlet，后升级为filter，现在升级为Java类
-#### Spring mvc入门案例
+#### Spring mvc入门案例(springmvc01)
 	1、eclipse中新建一个Dynamic web Project项目	
 		Dynamic web module version 这项什么意思？选2.5
 	2、导入jar包
