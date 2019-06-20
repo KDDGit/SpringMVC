@@ -101,9 +101,8 @@
 	14、在页面中访问：localhost：8080/项目名
 	
 #### 入门案例执行过程		
-      	可分为容器启动过程、浏览器请求过程。如图
-      	![image]()
-      	DispatcherServlet的执行过程
+	可分为容器启动过程、浏览器请求过程。如图    
+      	![image](https://github.com/KDDGit/SpringMVC/blob/master/Image/%E6%A1%88%E4%BE%8B%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%E5%9B%BE.jpg)			DispatcherServlet的执行过程
 	看DispatcherServlet的源码，主要方法，service，doService，doDispatch，mv=ha.handle();	  
 	
 #### 入门案例中涉及的组件
