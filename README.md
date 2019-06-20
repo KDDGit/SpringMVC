@@ -100,8 +100,34 @@
 	
 	14、在页面中访问：localhost：8080/项目名
 	
-					
-			
+#### 入门案例执行过程		
+      	可分为容器启动过程、浏览器请求过程。如图
+      	![image]()
+      	DispatcherServlet的执行过程
+	看DispatcherServlet的源码，主要方法，service，doService，doDispatch，mv=ha.handle();	  
+	
+#### 入门案例中涉及的组件
+	
+	DispatcherServlet：前段控制器
+		用户请求到达前段控制器，它就相当于mvc模式中的c，dispatcherServlet是整个流程控制的中心，
+		由它调用其他组件处理用户的请求，dispatcherServlet的存在降低了组件之间的耦合性。
+	HandlerMapping：处理器映射器
+		HandlerMapping负责根据用户请求找到Handler即处理器，SpringMVC提供了不同的映射器实现不同
+		映射方式，例如：配置文件方式，实现接口方式，注解方式等。
+	Handler：处理器
+		它就是我们开发中要编写的具体业务控制器。由DispatcherServlet把用户请求转发到Handler。由
+		Handler对具体的用户请求进行处理。
+	HandlAdapter：处理器适配器
+		通过HandlAdapter对处理器进行执行，这是适配器模式的应用，通过扩展适配器可以对更多类型的处
+		理器进行执行
+	View Resolver：视图解析器
+		View Resolver负责将处理结果生成View视图，View Resolver首先根据逻辑视图名解析成物理视图名，
+		即具体的页面地址，再生成View视图对象，最后对View进行渲染将处理结果通过页面展示给用户。
+	View：视图
+		SpringMVC框架提供了很多的View视图类型的支持，包括：jstlView、freemarkerView、pdfView等。我们
+		最常用的视图就是jsp
+		一般情况下需要通过页面标签或页面模板技术将模型数据通过页面展示给用户，需要由程序员根据业务需求开发具体
+		的页面。
 			
 			
 			
