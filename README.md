@@ -6,10 +6,10 @@
 	它通过一套注解，让一个简单的java类成为处理请求的控制器，而无需实现任何接口。同时它还支持RESTFull编程风格的请求。    
   
 #### 三层架构和mvc模型
- JavaEE中的三层架构：
-	表现层 		web层			mvc它只是表现层的一种设计模式
-	业务层		 service层
-	持久层		 dao层	
+ 	JavaEE中的三层架构：
+	表现层 		web层		mvc它只是表现层的一种设计模式
+	业务层		service层
+	持久层		dao层	
 	
 	mvc模型
 		Model（模型）
