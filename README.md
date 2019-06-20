@@ -37,7 +37,6 @@
 	
 	3、类路径下创建Springmvc.xml
 	4、导约束
-	``
 		<?xml version="1.0" encoding="UTF-8"?>
 		<beans 	xmlns="http://www.springframework.org/schema/beans"
 		xmlns:mvc="http://www.springframework.org/schema/mvc"
@@ -49,7 +48,6 @@
 							http://www.springframework.org/schema/mvc/spring-mvc.xsd
 							http://www.springframework.org/schema/context
 							http://www.springframework.org/schema/context/spring-context.xsd">
-							``
 	5、在web.xml配置核心控制器
 		注：快捷键：ctrl+shift+t
 		<!-- 配置spring的核心控制器 -->
@@ -85,7 +83,7 @@
 	
 	10、在springmvc中要配置
 		<!-- 告知Spring创建容器时要扫描的包 -->
-		<context:component-scan base-package="com.itheima.web"></context:component-scan>
+		<context:component-scan base-package="com.kdd.controller"></context:component-scan>
 	
 	11、在方法上面添加注解：
 		@RequestMapping("/hello")//请求的映射：它要和浏览器请求url保持一致
