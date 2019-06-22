@@ -127,6 +127,51 @@
 		最常用的视图就是jsp
 		一般情况下需要通过页面标签或页面模板技术将模型数据通过页面展示给用户，需要由程序员根据业务需求开发具体
 		的页面。
+		
+#### annotation-driven标签
+	Spring mvc中的三大组件：处理器映射器、处理器适配器、视图解析器
+	使用<mvc:annotation-driven>自动加载RequestMappingHanlerMapping（处理器映射器）和 RequestMappingHandlerAdapter（处理适配器）。可用在Springmvc.xml配置文件中使用<mvc:annotation-driven>替代注解处理器和适配器的配置。如：
+	<!-- 配置Spring mvc的注解驱动 -->
+	<mvc:annotation-driven></mvc:annotation-driven>			
+
+#### RequestMapping注解
+	看下源码
+		能使用于什么类型？？？？具体查看源码
+	作用：
+		建立请求url和控制器方法的对应关系  
+	出现位置：
+		写在方法：
+			和请求url进行绑定   
+		写在类上：
+			给访问url进行窄化处理   
+			可以让我们的url变得模块化的形成  
 			
-			
+		注：拷贝项目，要修改contextroot的内容
+			访问控制器的小细节，一个长的url地址，一个短的url地址。短的url前不要加/，会访问根目录
+	属性：
+		value，用于访问指定访问url和执行方法
+		method，用于指定请求的方式
+		params，用于指定限制请求参数的条件。支持简单表达式。要求key和value完全一样
+		headers，用于指定限制请求消息头的条件。
+		注：
+			以上四个属性只要出现2个或以上时，他们的关系是与的关系(都成立)。
+	
+		示例：
+			@RequestMapping(value="/updateAccount",params="money")
+			public String updateAccount(){
+				System.out.println("执行了。。。。");
+				return "success";
+			}
+			<a href="/account/findAccount?money=100">演示params属性</a>
+	
+	
+			@RequestMapping(value="/saveAccount",methos=RequestMethod.POST)
+			public String saveAccount(){
+				System.out.println("执行了。。。。");
+				return "success";
+			}
+			<a href="account/saveAccount">保存账户：演示method属性</a>
+			<from action="account/saveAccount" method="post">
+				<input type="submit" value="提交：演示method属性post请求">
+			<from>
 			
