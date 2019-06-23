@@ -199,4 +199,117 @@ Spring mvc是基于java实现的**mvc**设计模型的请求驱动类型的轻�
 		    打开Navigator视图-》打开项目.settings目录-》org.eclipse.wst.common.component-》
 		    修改web-module、name="java-out-path"的值
 		    访问控制器的小细节，一个长的url地址，一个短的url地址。短的url前不要加/，会访问根目录
+
+## 请求参数绑定
+	支持绑定的数据类型：
+			基本类型参数：
+				包括基本类型和String类型
+			POJO类型参数：
+				包括实体类，以及关联的实体类
+			数组和集合类型参数：
+				包括List结构和Map结构的集合（包括数组）
+			注：
+				SpringMVC 绑定请求参数是自动绑定的，但是要想使用，必须遵循使用要求。
+	使用要求：
+		如果是节本类型或者String类型：
+			要求我们的参数名称必须和控制器中方法的形参名称保持一致。（严格区分大小写）
+		如果是POJO类型，或者它的关联对象：
+			要求表单中参数名称和POJO类的属性名称保持一致。并且控制器方法的参数类是是POJO类型
+		如果是集合类型，有两种方式：
+	
+	简单示例：
+		/** 简单类型 **/
+		<!-- 测试参数绑定-Integer -->
+		<a href="test/helloGetInteger?money=100">测试参数绑定Integer</a>
+		<hr/>
+		<!-- 测试参数绑定-String -->
+		<a href="test/helloGetString?name=小明">测试参数绑定String</a>
+		
+		@Controller
+		@RequestMapping("/test")
+		public class HelloController {
 			
+			@RequestMapping("/helloGetInteger")
+			public String methodGet(Integer money) {
+				System.out.println("测试参数绑定Integer，简单案例执行了。。+"+money);
+				return "success";
+			}
+			
+			@RequestMapping("/helloGetString")
+			public String methodString(String name) {
+				System.out.println("测试参数绑定String，简单案例执行了。。+"+name);
+				return "success";
+			}
+			
+		}
+	---------------------------------------------------------------------------------------			
+		/** pojo类型 **/
+		<!-- 测试参数绑定-pojo -->
+		<form action="test/helloGetPojo" method="post">
+			姓名：<input type="text" name="name"><br/>
+			年龄：<input type="text" name="age"><br/>
+			<input type="submit" value="测试参数绑定Pojo"/>
+		</form>
+		<hr/>
+		<!-- 测试参数绑定-pojo及关联类 -->
+		<form action="test/helloGetPojo" method="post">
+			姓名：<input type="text" name="name"><br/>
+			年龄：<input type="text" name="age"><br/>
+			城市：<input type="text" name="adress.cityName"><br/>
+			区域：<input type="text" name="adress.areaName"><br/>
+			<input type="submit" value="测试参数绑定Pojo及关联类"/>
+		</form>
+		
+		@RequestMapping("/helloGetPojo")
+		public String methodPojo(People people) {
+			System.out.println("测试参数绑定Pojo，简单案例执行了。。+"+people);
+			return "success";
+		}
+		
+		public class People implements Serializable {
+			private String name;
+			private Integer age;
+			private Adress adress;
+			。。。。。。。
+		}
+		public class Adress implements Serializable{
+			private String cityName;
+			private String areaName;
+			。。。。。。
+		}
+	---------------------------------------------------------------------------------------			
+	注：
+		psot请求乱码问题？
+			1、配置web.xml中的过滤器
+			<!-- 配置springmvc编码过滤器 -->
+			<filter>
+				<filter-name>characterEncodingFilter</filter-name>
+				<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+				<!-- 设置过滤器中的属性值 -->
+				<init-param>
+					<param-name>encoding</param-name>
+					<param-value>UTF-8</param-value>
+				</init-param>
+			</filter>
+			
+			<filter-mapping>
+				<filter-name>characterEncodingFilter</filter-name>
+				<url-pattern>/*</url-pattern>
+			</filter-mapping>
+			2、配置springmvc.xml中的不需要拦截的文件
+			
+			<mvc:annotation-driven></mvc:annotation-driven>	
+			<!-- 设置静态资源不过滤 -->
+			<mvc:resources location="/css/" mapping="/css/**"></mvc:resources>	
+			<mvc:resources location="/images/" mapping="/images/**"></mvc:resources>	
+			<mvc:resources location="/scripts/" mapping="/javascript/**"></mvc:resources>
+	
+	
+	get方式乱码解决：
+		tomcat就给解决了。假如get方式乱码，按照下面方式配置
+		tomcat对get和post请求处理方式不同，get请求的编码问题，要改tomcat的server.xml配置文件，如下：
+		<Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
+		改为：
+		<Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443" useBodyEncodingForURI="true"/>
+		如果遇到ajax请求仍然乱码，请把： useBodyEncodingForURI="true"改为URIEncoding="UTF-8"即可。
+	
