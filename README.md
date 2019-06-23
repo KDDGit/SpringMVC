@@ -1,7 +1,7 @@
 # SpringMVC案例和笔记
 ## Spring mvc概述
-``Spring mvc是基于java实现的**mvc**设计模型的请求驱动类型的轻量级web框架。**Spring框架提供了构建web应用程序的全功能mvc模块**。
-它通过一套注解，让一个**简单的java类成为处理请求的控制器**，而无需实现任何接口。同时它还支持**RESTFul编程风格**的请求。``
+Spring mvc是基于java实现的**mvc**设计模型的请求驱动类型的轻量级web框架。**Spring框架提供了构建web应用程序的全功能mvc模块**。
+它通过一套注解，让一个**简单的java类成为处理请求的控制器**，而无需实现任何接口。同时它还支持**RESTFul编程风格**的请求。
 ## 三层架构和mvc模型
  	JavaEE中的三层架构：
 	表现层 		web层		mvc它只是表现层的一种设计模式
@@ -34,7 +34,7 @@
 	
 	3、类路径下创建Springmvc.xml
 	4、导约束
-		```<?xml version="1.0" encoding="UTF-8"?>
+		<?xml version="1.0" encoding="UTF-8"?>
 		<beans 	xmlns="http://www.springframework.org/schema/beans"
 		xmlns:mvc="http://www.springframework.org/schema/mvc"
 		xmlns:context="http://www.springframework.org/schema/context"
@@ -44,7 +44,7 @@
 							http://www.springframework.org/schema/mvc
 							http://www.springframework.org/schema/mvc/spring-mvc.xsd
 							http://www.springframework.org/schema/context
-							http://www.springframework.org/schema/context/spring-context.xsd">```
+							http://www.springframework.org/schema/context/spring-context.xsd">
 	5、在web.xml配置核心控制器
 		注：快捷键：ctrl+shift+t
 		<!-- 配置spring的核心控制器 -->
@@ -97,12 +97,12 @@
 	
 	14、在页面中访问：localhost：8080/项目名
 	
-#### 入门案例执行过程		
+## 入门案例执行过程		
 	可分为容器启动过程、浏览器请求过程。如图    
       	![image](https://github.com/KDDGit/SpringMVC/blob/master/Image/%E6%A1%88%E4%BE%8B%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%E5%9B%BE.jpg)			DispatcherServlet的执行过程
 	看DispatcherServlet的源码，主要方法，service，doService，doDispatch，mv=ha.handle();	  
 	
-#### 入门案例中涉及的组件
+## 入门案例中涉及的组件
 	
 	DispatcherServlet：前段控制器
 		用户请求到达前段控制器，它就相当于mvc模式中的c，dispatcherServlet是整个流程控制的中心，
@@ -125,13 +125,13 @@
 		一般情况下需要通过页面标签或页面模板技术将模型数据通过页面展示给用户，需要由程序员根据业务需求开发具体
 		的页面。
 		
-#### annotation-driven标签
+## annotation-driven标签
 	Spring mvc中的三大组件：处理器映射器、处理器适配器、视图解析器
 	使用<mvc:annotation-driven>自动加载RequestMappingHanlerMapping（处理器映射器）和 RequestMappingHandlerAdapter（处理适配器）。可用在Springmvc.xml配置文件中使用<mvc:annotation-driven>替代注解处理器和适配器的配置。如：
 	<!-- 配置Spring mvc的注解驱动 -->
 	<mvc:annotation-driven></mvc:annotation-driven>			
 
-#### RequestMapping注解
+## RequestMapping注解
 	看下源码
 		能使用于什么类型？？？？具体查看源码
 		查看源码，ctrl+左键点击@RequestMapping即可
@@ -152,9 +152,7 @@
 			以上四个属性只要出现2个或以上时，他们的关系是与的关系(都成立)。
 	
 		示例：
-			<strong>jsp页面<strong>
-			**jsp页面**
-			__jsp页面__
+			/**jsp页面**/
 			<!-- 第一个测试method="get" -->
 			<a href="${pageContext.request.contextPath}/test/helloGet">@RequestMapping的method方法get请求</a>
 			<!-- 测试method="post"请求 -->
@@ -164,7 +162,8 @@
 			<hr/>
 			<!-- 测试params的属性 -->
 			<a href="test/helloParams?money=1001">测试RequestMapping的params属性</a>
-			**Springmvc.xml**
+		-------------------------------------------------------------------------------------------------
+			/**Springmvc.xml**/
 			<!-- 配置springmvc要扫描的包 -->
 			<context:component-scan base-package="com.kdd.springmvc02"></context:component-scan>
 			<!-- 配置视图解析器 -->
@@ -172,7 +171,8 @@
 				<property name="prefix" value="/WEB-INF/page/"></property>
 				<property name="suffix" value=".jsp"></property>
 			</bean>
-			**控制器**
+		-------------------------------------------------------------------------------------------------	
+			/**控制器**/
 			@Controller
 			@RequestMapping("/test")
 			public class HelloController {
