@@ -305,11 +305,11 @@ Spring mvc是基于java实现的**mvc**设计模型的请求驱动类型的轻�
 			<mvc:resources location="/scripts/" mapping="/javascript/**"></mvc:resources>
 	
 	
-	get方式乱码解决：
-		tomcat就给解决了。假如get方式乱码，按照下面方式配置
-		tomcat对get和post请求处理方式不同，get请求的编码问题，要改tomcat的server.xml配置文件，如下：
-		<Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
-		改为：
-		<Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443" useBodyEncodingForURI="true"/>
-		如果遇到ajax请求仍然乱码，请把： useBodyEncodingForURI="true"改为URIEncoding="UTF-8"即可。
+		get方式乱码解决：
+			tomcat就给解决了。假如get方式乱码，按照下面方式配置
+			tomcat对get和post请求处理方式不同，get请求的编码问题，要改tomcat的server.xml配置文件，如下：
+			<Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
+			改为：
+			<Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443" useBodyEncodingForURI="true"/>
+			如果遇到ajax请求仍然乱码，请把： useBodyEncodingForURI="true"改为URIEncoding="UTF-8"即可。
 	
