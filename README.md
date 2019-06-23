@@ -1,7 +1,8 @@
-# SpringMVC
-### SpringMVC案例和笔记
+# SpringMVC案例和笔记
+=========================
 
 #### Spring mvc概述
+-----------------------
 	Spring mvc是基于java实现的mvc设计模型的请求驱动类型的轻量级web框架。Spring框架提供了构建web应用程序的全功能mvc模块。    
 	它通过一套注解，让一个简单的java类成为处理请求的控制器，而无需实现任何接口。同时它还支持RESTFull编程风格的请求。    
   
