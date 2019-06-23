@@ -312,4 +312,50 @@ Spring mvc是基于java实现的**mvc**设计模型的请求驱动类型的轻�
 			改为：
 			<Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443" useBodyEncodingForURI="true"/>
 			如果遇到ajax请求仍然乱码，请把： useBodyEncodingForURI="true"改为URIEncoding="UTF-8"即可。
+			
+## pojo类型中集合类型封装：
+	示例：
+	<!-- 测试参数绑定-集合类型list -->
+	<form action="test/helloList" method="post">
+		用户密码：<input type="text" name="username" /><br/>
+		用户密码：<input type="password" name="password" /><br/>
+		用户年龄：<input type="text" name="age" /><br/>
+		账户1名称：<input type="text" name="accountList[0].name" /><br/>
+		账户1金额：<input type="text" name="accountList[0].money" /><br/>
+		账户2名称：<input type="text" name="accountList[1].name" /><br/>
+		账户2金额：<input type="text" name="accountList[1].money" /><br/>
+		<input type="submit" value="测试参数绑定集合list"/>
+	</form>
+	<!-- 测试参数绑定-集合类型Map -->
+	<form action="test/helloList" method="post">
+		用户密码：<input type="text" name="username" /><br/>
+		用户密码：<input type="password" name="password" /><br/>
+		用户年龄：<input type="text" name="age" /><br/>
+		账户1名称：<input type="text" name="accountMap['one'].name" /><br/>
+		账户1金额：<input type="text" name="accountMap['one'].money" /><br/>
+		账户2名称：<input type="text" name="accountMap['two'].name" /><br/>
+		账户2金额：<input type="text" name="accountMap['two'].money" /><br/>
+		<input type="submit" value="测试参数绑定结合Map"/>
+	</form>
+	-----------------------------------------------------------------------------
+	@RequestMapping("/helloList")
+	public String methodList(User user) {
+		System.out.println("测试参数绑定Pojo，简单案例执行了。。+"+user);
+		return "success";
+	}
+	---------------------------------------------------------------------------------
+	public class User implements Serializable {
+		private String username;
+		private String password;
+		private Integer age;
+		private List<Account> accountList;
+		private Map<String,Account> accountMap;
+		。。。。。
+	}
+	public class Account implements Serializable {
+		private String name;
+		private Integer money;
+		。。。。。。。。
+	}
+			
 	
