@@ -1,10 +1,8 @@
 # SpringMVC案例和笔记
-
 ## Spring mvc概述
-Spring mvc是基于java实现的**mvc**设计模型的请求驱动类型的轻量级web框架。**Spring框架提供了构建web应用程序的全功能mvc模块**。
-它通过一套注解，让一个**简单的java类成为处理请求的控制器**，而无需实现任何接口。同时它还支持**RESTFul编程风格**的请求。
-
-#### 三层架构和mvc模型
+``Spring mvc是基于java实现的**mvc**设计模型的请求驱动类型的轻量级web框架。**Spring框架提供了构建web应用程序的全功能mvc模块**。
+它通过一套注解，让一个**简单的java类成为处理请求的控制器**，而无需实现任何接口。同时它还支持**RESTFul编程风格**的请求。``
+## 三层架构和mvc模型
  	JavaEE中的三层架构：
 	表现层 		web层		mvc它只是表现层的一种设计模式
 	业务层		service层
@@ -18,7 +16,7 @@ Spring mvc是基于java实现的**mvc**设计模型的请求驱动类型的轻�
 		Controller（控制器）
 			是应用程序中处理用户交互部分，就是处理程序逻辑的。
 			先前用servlet，后升级为filter，现在升级为Java类
-#### Spring mvc入门案例(springmvc01)
+## Spring mvc入门案例(springmvc01)
 	1、eclipse中新建一个Dynamic web Project项目	
 		Dynamic web module version 这项什么意思？选2.5
 	2、导入jar包
@@ -36,7 +34,7 @@ Spring mvc是基于java实现的**mvc**设计模型的请求驱动类型的轻�
 	
 	3、类路径下创建Springmvc.xml
 	4、导约束
-		<?xml version="1.0" encoding="UTF-8"?>
+		```<?xml version="1.0" encoding="UTF-8"?>
 		<beans 	xmlns="http://www.springframework.org/schema/beans"
 		xmlns:mvc="http://www.springframework.org/schema/mvc"
 		xmlns:context="http://www.springframework.org/schema/context"
@@ -46,7 +44,7 @@ Spring mvc是基于java实现的**mvc**设计模型的请求驱动类型的轻�
 							http://www.springframework.org/schema/mvc
 							http://www.springframework.org/schema/mvc/spring-mvc.xsd
 							http://www.springframework.org/schema/context
-							http://www.springframework.org/schema/context/spring-context.xsd">
+							http://www.springframework.org/schema/context/spring-context.xsd">```
 	5、在web.xml配置核心控制器
 		注：快捷键：ctrl+shift+t
 		<!-- 配置spring的核心控制器 -->
