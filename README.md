@@ -131,7 +131,7 @@ Spring mvc是基于java实现的**mvc**设计模型的请求驱动类型的轻�
 	<!-- 配置Spring mvc的注解驱动 -->
 	<mvc:annotation-driven></mvc:annotation-driven>			
 
-## RequestMapping注解
+## RequestMapping注解(springmvc02)
 	看下源码
 		能使用于什么类型？？？？具体查看源码
 		查看源码，ctrl+左键点击@RequestMapping即可
