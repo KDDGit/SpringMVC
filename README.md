@@ -155,7 +155,9 @@
 			以上四个属性只要出现2个或以上时，他们的关系是与的关系(都成立)。
 	
 		示例：
+			<strong>jsp页面<strong>
 			**jsp页面**
+			__jsp页面__
 			<!-- 第一个测试method="get" -->
 			<a href="${pageContext.request.contextPath}/test/helloGet">@RequestMapping的method方法get请求</a>
 			<!-- 测试method="post"请求 -->
