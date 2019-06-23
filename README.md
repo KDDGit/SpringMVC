@@ -137,6 +137,7 @@
 #### RequestMapping注解
 	看下源码
 		能使用于什么类型？？？？具体查看源码
+		查看源码，ctrl+左键点击@RequestMapping即可
 	作用：
 		建立请求url和控制器方法的对应关系  
 	出现位置：
@@ -145,9 +146,6 @@
 		写在类上：
 			给访问url进行窄化处理   
 			可以让我们的url变得模块化的形成  
-			
-		注：拷贝项目，要修改contextroot的内容
-			访问控制器的小细节，一个长的url地址，一个短的url地址。短的url前不要加/，会访问根目录
 	属性：
 		value，用于访问指定访问url和执行方法
 		method，用于指定请求的方式
@@ -157,21 +155,49 @@
 			以上四个属性只要出现2个或以上时，他们的关系是与的关系(都成立)。
 	
 		示例：
-			@RequestMapping(value="/updateAccount",params="money")
-			public String updateAccount(){
-				System.out.println("执行了。。。。");
-				return "success";
+			**jsp页面**
+			<!-- 第一个测试method="get" -->
+			<a href="${pageContext.request.contextPath}/test/helloGet">@RequestMapping的method方法get请求</a>
+			<!-- 测试method="post"请求 -->
+			<form action="test/helloPost" method="post">
+				<input type="submit" value="method=post的请求">
+			</form>
+			<hr/>
+			<!-- 测试params的属性 -->
+			<a href="test/helloParams?money=1001">测试RequestMapping的params属性</a>
+			**Springmvc.xml**
+			<!-- 配置springmvc要扫描的包 -->
+			<context:component-scan base-package="com.kdd.springmvc02"></context:component-scan>
+			<!-- 配置视图解析器 -->
+			<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+				<property name="prefix" value="/WEB-INF/page/"></property>
+				<property name="suffix" value=".jsp"></property>
+			</bean>
+			**控制器**
+			@Controller
+			@RequestMapping("/test")
+			public class HelloController {
+				@RequestMapping("/helloGet")
+				public String methodGet() {
+					System.out.println("测试@RequestMapping的method方法的get请求执行了。。");
+					return "success";
+				}
+				
+				@RequestMapping(value="/helloPost",method=RequestMethod.POST)
+				public String methodPost() {
+					System.out.println("测试@RequestMapping的method方法的post请求执行了。。");
+					return "success";
+				}
+				
+				@RequestMapping(value="/helloParams",params="money=1001")
+				public String paramsGet() {
+					System.out.println("测试@RequestMapping的params的属性求执行了。。");
+					return "success";
+				}
 			}
-			<a href="/account/findAccount?money=100">演示params属性</a>
-	
-	
-			@RequestMapping(value="/saveAccount",methos=RequestMethod.POST)
-			public String saveAccount(){
-				System.out.println("执行了。。。。");
-				return "success";
-			}
-			<a href="account/saveAccount">保存账户：演示method属性</a>
-			<from action="account/saveAccount" method="post">
-				<input type="submit" value="提交：演示method属性post请求">
-			<from>
+		注：拷贝项目，项目右键-》properties-》Web Project Settings-》Context root：
+		    部署到tomcat显示原来名字后缀：
+		    打开Navigator视图-》打开项目.settings目录-》org.eclipse.wst.common.component-》
+		    修改web-module、name="java-out-path"的值
+		    访问控制器的小细节，一个长的url地址，一个短的url地址。短的url前不要加/，会访问根目录
 			
