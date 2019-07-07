@@ -100,7 +100,8 @@ Spring mvc是基于java实现的**mvc**设计模型的请求驱动类型的轻�
 	
 ## 入门案例执行过程		
 	可分为容器启动过程、浏览器请求过程。如图    
-      	![image](https://github.com/KDDGit/SpringMVC/blob/master/Image/%E6%A1%88%E4%BE%8B%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%E5%9B%BE.jpg)			DispatcherServlet的执行过程
+      	![image](https://raw.githubusercontent.com/KDDGit/SpringMVC/master/Image/%E6%A1%88%E4%BE%8B%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%E5%9B%BE.jpg)			
+	DispatcherServlet的执行过程
 	看DispatcherServlet的源码，主要方法，service，doService，doDispatch，mv=ha.handle();	  
 	
 ## 入门案例中涉及的组件
@@ -128,9 +129,10 @@ Spring mvc是基于java实现的**mvc**设计模型的请求驱动类型的轻�
 		
 ## annotation-driven标签
 	Spring mvc中的三大组件：处理器映射器、处理器适配器、视图解析器
-	使用<mvc:annotation-driven>自动加载RequestMappingHanlerMapping（处理器映射器）和 RequestMappingHandlerAdapter（处理适配器）。可用在Springmvc.xml配置文件中使用<mvc:annotation-driven>替代注解处理器和适配器的配置。如：
-	<!-- 配置Spring mvc的注解驱动 -->
-	<mvc:annotation-driven></mvc:annotation-driven>			
+	使用<mvc:annotation-driven>自动加载RequestMappingHanlerMapping（处理器映射器）和 RequestMappingHandlerAdapter（处理适配器）。
+	可用在Springmvc.xml配置文件中使用<mvc:annotation-driven>替代注解处理器和适配器的配置。如：
+		<!-- 配置Spring mvc的注解驱动 -->
+		<mvc:annotation-driven></mvc:annotation-driven>			
 
 ## RequestMapping注解(springmvc02)
 	看下源码
