@@ -36,15 +36,16 @@ Spring mvc是基于java实现的**mvc**设计模型的请求驱动类型的轻�
 	4、导约束
 		<?xml version="1.0" encoding="UTF-8"?>
 		<beans 	xmlns="http://www.springframework.org/schema/beans"
-		xmlns:mvc="http://www.springframework.org/schema/mvc"
-		xmlns:context="http://www.springframework.org/schema/context"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://www.springframework.org/schema/beans
-							http://www.springframework.org/schema/beans/spring-beans.xsd
-							http://www.springframework.org/schema/mvc
-							http://www.springframework.org/schema/mvc/spring-mvc.xsd
-							http://www.springframework.org/schema/context
-							http://www.springframework.org/schema/context/spring-context.xsd">
+			xmlns:mvc="http://www.springframework.org/schema/mvc"
+			xmlns:context="http://www.springframework.org/schema/context"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://www.springframework.org/schema/beans
+					    http://www.springframework.org/schema/beans/spring-beans.xsd
+					    http://www.springframework.org/schema/mvc
+					    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+					    http://www.springframework.org/schema/context
+					    http://www.springframework.org/schema/context/spring-context.xsd">
+		</beans>	
 	5、在web.xml配置核心控制器
 		注：快捷键：ctrl+shift+t
 		<!-- 配置spring的核心控制器 -->
